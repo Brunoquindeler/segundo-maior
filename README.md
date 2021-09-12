@@ -9,7 +9,6 @@ ___
 
 ### Olá pessoal, vou demonstrar em um simples exemplo, passo a passo, do porquê ter **100% de cobertura de testes funcionais** nem sempre é o suficiente para garantir que sua função funciona como deveria.
 
-<<<<<<< HEAD
 ### Grande parte do conhecimento adquirido para fazer esse artigo foi com o meu time incrível da [DB1](https://db1group.com) e estudando pelo maravilhoso GitBook **[Aprenda Go Com Testes](https://larien.gitbook.io/aprenda-go-com-testes/)** criado por **[Chris James](https://twitter.com/quii)** e traduzido em português por **[Lauren](https://larien.dev/)**, obrigado!!
 
 ___
