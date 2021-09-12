@@ -1,4 +1,4 @@
-# ⚡️ Algo que aprendi com Go e TDD. ⚡️
+# ⚡️ Algo que aprendi com Go e TDD ⚡️
 ## Porque 100% de cobertura de testes funcionais nem sempre é o suficiente.
 ___
 ![Capa](imgs/red-green-blue-gophers-smaller.png)
@@ -75,7 +75,7 @@ ___
 ## A estrutura dos arquivos. 📂 <a name="estrutura"></a>
 Em Go, temos um pacote de testes na biblioteca padrão da linguagem.
 
-Para que o a ferramenta **go test** reconheça arquivos de teste, devemos cria-los com a seguinte sintaxe: **nome_do_arquivo_test.go**
+Para que a ferramenta **go test** reconheça arquivos de teste, devemos cria-los com a seguinte sintaxe: **nome_do_arquivo_test.go**
 
 Não é obrigatório, mas por convenção, colocaremos o mesmo nome do arquivo onde estará a nossa função.
 
@@ -102,7 +102,7 @@ func TestNomeDoTeste(t *testing.T){
 
 Vamos definir o corpo do teste de acordo com o nosso requisito descrito anteriormente.
 ~~~go
-func TestNomeDoTeste(t *testing.T){
+func TestSegundoMaior(t *testing.T){
     dado := []int{2, 5, 1, 6, 3, 8, 4}
 
 	esperado := 6
@@ -113,7 +113,7 @@ func TestNomeDoTeste(t *testing.T){
 	}
 }
 ~~~
-O que fizemos aqui foi definir um slice de inteiros para ser testado, também definimos o resultado esperado e passamos o retorno da função, que ainda será criada para retornar o segundo número maior desse slice para uma variável, e ao final comparamos se o resultado é o mesmo que o esperado.
+O que fizemos aqui foi definir um slice de inteiros para ser testado, também definimos o resultado esperado e passamos o retorno da função, que ainda será criada, para retornar o segundo número maior desse slice para uma variável, e ao final comparamos se o resultado é o mesmo que o esperado.
 
 **Código final do teste:**
 ~~~go
@@ -184,9 +184,9 @@ Mas temos um porém, nós apenas "dizemos" que rodamos o nosso teste em um cená
 
 Mas... e se criássemos outros cenários de teste que podemos imaginar ser possível ❓❕❓
 
-E se o segundo número maior viesse antes do primeiro ❓❕❓
+E se o segundo número maior viesse depois do primeiro ❓❕❓
 
-**Exemplo: vamos colocar o 8 em primeiro lugar, será que nossa função atende a este cenário?**
+**Exemplo: vamos colocar o maior em primeiro lugar, será que nossa função atende a este cenário?**
 ~~~go
 package main
 
@@ -237,7 +237,7 @@ ___
 ~~~
 O que fizemos foi atribuir a variável **"cenarios"** um slice de structs (structs é uma forma de você definir estruturas de dados personalizadas, assim facilita no entendimento do código, entre outras coisas).
 
-Criamos apenas dois cenários, mas podemos criar quanto quisermos.
+Criamos apenas dois cenários, mas podemos criar quantos quiser.
 
 **Obs: "descricao"** deve ser uma descrição minima do cenário, coloquei de forma mais genérica porque é apenas um exemplo.
 ___
@@ -342,4 +342,4 @@ Por fim, vemos nosso teste passando novamente e com mais confiança de que está
 ___
 
 ## Conclusão ☑️ <a name="conclusao"></a>
-É isso pessoal, mesmo que o exemplo seja bem simples, eu espero que tenha passado uma noção da importância de diversos cenários para seu teste, e também um breve noção de **Go** para quem não conhece a linguagem. 😄😄
+É isso pessoal, mesmo que o exemplo seja bem simples, eu espero que tenha passado uma noção da importância de diversos cenários para seu teste, e também uma breve noção de **Go** para quem não conhece a linguagem. 😄😄
