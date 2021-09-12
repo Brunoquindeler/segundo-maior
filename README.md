@@ -5,7 +5,11 @@ ___
 
 ![Capa](imgs/red-green-blue-gophers-smaller.png)
 
+**[Arte de: Denise](https://twitter.com/deniseyu21)**
+
 ### Olá pessoal, vou demonstrar em um simples exemplo, passo a passo, do porquê ter **100% de cobertura de testes funcionais** nem sempre é o suficiente para garantir que sua função funciona como deveria.
+
+### Grande parte do conhecimento adquirido para fazer esse artigo foi estudando pelo maravilhoso GitBook **[Aprenda Go Com Testes](https://larien.gitbook.io/aprenda-go-com-testes/)** criado por **[Chris James](https://twitter.com/quii)** e traduzido em português por **[Lauren](https://www.linkedin.com/in/lauren-ferreira/)**, obrigado!!
 
 ___
 
