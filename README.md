@@ -1,16 +1,27 @@
-# ⚡️ Porque 100% de cobertura de testes funcionais nem sempre é o suficiente. ⚡️
-
+# ⚡️ Algo que aprendi com Go e TDD. ⚡️
+## Porque 100% de cobertura de testes funcionais nem sempre é o suficiente.
+___
 ![Capa](imgs/red-green-blue-gophers-smaller.png)
 
-Olá pessoal, vou demonstrar em um simples exemplo, passo a passo, do porquê ter **100% de cobertura de testes funcionais** nem sempre é o suficiente para garantir que sua função funciona como deveria.
+### Olá pessoal, vou demonstrar em um simples exemplo, passo a passo, do porquê ter **100% de cobertura de testes funcionais** nem sempre é o suficiente para garantir que sua função funciona como deveria.
 
-```
-Os testes funcionais, também conhecidos como testes de caixa-preta, é uma validação de software na qual determinada funcionalidade é verificada, sem levar em conta a estrutura do código-fonte, os detalhes de implementação ou os cenários de execução. Nos testes de caixa-preta, o foco é apenas as entradas e saídas do sistema, sem se preocupar com a estrutura interna do programa.
-```
-**REF: [Treinaweb](https://www.treinaweb.com.br/blog/principais-tecnicas-de-testes-funcionais)**
 ___
 
-## Vamos lá. 🔥
+# Sumário
+1. **[Vamos lá. 🔥](#vamosla)**
+2. **[Requisitos da função. 📑](#requisitos)**
+3. **[Iniciando o projeto. 💻](#iniciando)**
+4. **[A estrutura dos arquivos. 📂](#estrutura)**
+5. **[Vamos começar pelo teste. ⚠️](#teste)**
+6. **[Criando a função. 🔜](#funcao)**
+7. **[Rodando o teste. 🔄](#rodandoteste)**
+8. **[Ajustando o teste. ⚠️](#ajusteteste)**
+9. **[Ajustando o código. ⚠️](#ajustefuncao)**
+10. **[Teste funcionando. ✅✅](#testeok)**
+11. **[Conclusão ☑️](#conclusao)**
+___
+
+## Vamos lá. 🔥  <a name="vamosla"></a>
 
 Para este exemplo vamos utilizar a linguagem **[Go](https://golang.org)** e a técnica de desenvolvimento **[TDD](https://pt.wikipedia.org/wiki/Test-driven_development)** que é o desenvolvimento dirigido por testes.
 ___
@@ -23,7 +34,7 @@ ___
 **[Download](https://code.visualstudio.com/)**
 ___
 
-## Requisitos da função. 📑
+## Requisitos da função. 📑 <a name="requisitos"></a>
 Nosso requisito é obter o segundo maior número em uma coleção de números inteiros.
 ___
 **Exemplo:**
@@ -39,7 +50,7 @@ Resultado: 6
 ~~~
 ___
 
-## Iniciando o projeto. 💻
+## Iniciando o projeto. 💻 <a name="iniciando"></a>
 Criei um repositório no **[GitHub](https://github.com/)** para versionar meu código remotamente. __(Opcional).__
 
 No terminal vamos criar um diretório, entrar nele e vamos executar o comando **(go mod init O NOME DO SEU MÓDULO)**.
@@ -61,7 +72,7 @@ Você deve obter uma saída parecida com esta.
 ![go mod](./imgs/gomod.png)
 ___
 
-## A estrutura dos arquivos. 📂
+## A estrutura dos arquivos. 📂 <a name="estrutura"></a>
 Em Go, temos um pacote de testes na biblioteca padrão da linguagem.
 
 Para que o a ferramenta **go test** reconheça arquivos de teste, devemos cria-los com a seguinte sintaxe: **nome_do_arquivo_test.go**
@@ -71,7 +82,7 @@ Não é obrigatório, mas por convenção, colocaremos o mesmo nome do arquivo o
 ![Exemplo do nome do arquivo de teste](imgs/exemplodenomesdearquivos.png)
 ___
 
-## Vamos começar pelo teste. ⚠️
+## Vamos começar pelo teste. ⚠️ <a name="teste"></a>
 
 Primeiro, definimos o pacote onde estamos, no caso **main**, e importamos o pacote de testes do Go.
 ~~~go
@@ -123,7 +134,7 @@ func TestSegundoMaior(t *testing.T) {
 ~~~
 ___
 
-## Criando a função. 🔜
+## Criando a função. 🔜 <a name="funcao"></a>
 Agora que seguimos o **TDD** e já temos o nosso teste feito, vamos criar a nossa função. 
 
 ~~~go
@@ -153,7 +164,7 @@ ___
 ### Bom, esta função parece satisfazer o nosso requisito, vamos testar?
 ___
 
-## Rodando o teste. 🔄
+## Rodando o teste. 🔄 <a name="rodandoteste"></a>
 Para rodar testes em **Go** é bem simples e faremos isso direto no terminal, sem precisar baixar nenhuma ferramenta ou pacote externo.
 
 o comando para rodar os testes é **go test**, mas utilizaremos a flag **-cover** para retornar também a cobertura do nosso teste.
@@ -202,7 +213,7 @@ Repare que a nossa cobertura continua em 100%, porém, o nosso teste falhou.
 Este é o problema, devemos imaginar todos os cenários possíveis para poder garantir que a função irá funcionar corretamente, com a miníma possibilidade de falhas, mesmo com 100% de cobertura da função.
 ___
 
-## Ajustando o teste. ⚠️
+## Ajustando o teste. ⚠️ <a name="ajusteteste"></a>
 ### Vamos precisar criar diversos cenários para os testes, então vamos criar uma estrutura auxiliadora para facilitar a criação deles.
 ___
 
@@ -297,7 +308,7 @@ func retornaResultado(t *testing.T, dado []int, esperado, obtido int) {
 ~~~
 ___
 
-## Ajustando o código. ⚠️
+## Ajustando o código. ⚠️ <a name="ajustefuncao"></a>
 ### Agora precisamos ajustar o código para atender os novos cenários.
 ___
 Na nossa função eu apenas adicionei um novo **if** para checar se o número atual é menor que o primeiro e maior que o segundo e sendo verdadeira esta condição eu atribuo o número ao segundo.
@@ -324,11 +335,11 @@ func SegundoMaior(numeros []int) int {
 
 **OBS:** Pode existir outras formas de criar este algoritmo.
 ___
-## Teste funcionando. ✅✅
+## Teste funcionando. ✅✅ <a name="testeok"></a>
 Por fim, vemos nosso teste passando novamente e com mais confiança de que está certo.
 
 ![Primeiro teste](imgs/gotestcover.png) 💯💯💯
 ___
 
-## Conclusão ☑️
+## Conclusão ☑️ <a name="conclusao"></a>
 É isso pessoal, mesmo que o exemplo seja bem simples, eu espero que tenha passado uma noção da importância de diversos cenários para seu teste, e também um breve noção de **Go** para quem não conhece a linguagem. 😄😄
