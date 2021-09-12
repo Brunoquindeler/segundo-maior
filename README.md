@@ -1,6 +1,8 @@
-# ⚡️ Algo que aprendi com Go e TDD. ⚡️
+# ⚡️ Algo que aprendi com Go e TDD ⚡️
 ## Porque 100% de cobertura de testes funcionais nem sempre é o suficiente.
+
 ___
+
 ![Capa](imgs/red-green-blue-gophers-smaller.png)
 
 ### Olá pessoal, vou demonstrar em um simples exemplo, passo a passo, do porquê ter **100% de cobertura de testes funcionais** nem sempre é o suficiente para garantir que sua função funciona como deveria.
@@ -19,11 +21,13 @@ ___
 9. **[Ajustando o código. ⚠️](#ajustefuncao)**
 10. **[Teste funcionando. ✅✅](#testeok)**
 11. **[Conclusão ☑️](#conclusao)**
+
 ___
 
 ## Vamos lá. 🔥  <a name="vamosla"></a>
 
 Para este exemplo vamos utilizar a linguagem **[Go](https://golang.org)** e a técnica de desenvolvimento **[TDD](https://pt.wikipedia.org/wiki/Test-driven_development)** que é o desenvolvimento dirigido por testes.
+
 ___
 
 ### 🔧 Pré-requisitos se quiser seguir **Hands-On** o passo a passo.  🔨
@@ -32,11 +36,14 @@ ___
 
 - ✅ Um editor de código. Irei utilizar o VSCode.
 **[Download](https://code.visualstudio.com/)**
+
 ___
 
 ## Requisitos da função. 📑 <a name="requisitos"></a>
 Nosso requisito é obter o segundo maior número em uma coleção de números inteiros.
+
 ___
+
 **Exemplo:**
 
 **Dado:** uma coleção de números inteiros. 
@@ -48,6 +55,7 @@ ___
 ~~~go
 Resultado: 6
 ~~~
+
 ___
 
 ## Iniciando o projeto. 💻 <a name="iniciando"></a>
@@ -70,16 +78,18 @@ go mod init github.com/brunoquindeler/segundo-maior
 Você deve obter uma saída parecida com esta.
 
 ![go mod](./imgs/gomod.png)
+
 ___
 
 ## A estrutura dos arquivos. 📂 <a name="estrutura"></a>
 Em Go, temos um pacote de testes na biblioteca padrão da linguagem.
 
-Para que o a ferramenta **go test** reconheça arquivos de teste, devemos cria-los com a seguinte sintaxe: **nome_do_arquivo_test.go**
+Para que a ferramenta **go test** reconheça arquivos de teste, devemos cria-los com a seguinte sintaxe: **nome_do_arquivo_test.go**
 
 Não é obrigatório, mas por convenção, colocaremos o mesmo nome do arquivo onde estará a nossa função.
 
 ![Exemplo do nome do arquivo de teste](imgs/exemplodenomesdearquivos.png)
+
 ___
 
 ## Vamos começar pelo teste. ⚠️ <a name="teste"></a>
@@ -102,7 +112,7 @@ func TestNomeDoTeste(t *testing.T){
 
 Vamos definir o corpo do teste de acordo com o nosso requisito descrito anteriormente.
 ~~~go
-func TestNomeDoTeste(t *testing.T){
+func TestSegundoMaior(t *testing.T){
     dado := []int{2, 5, 1, 6, 3, 8, 4}
 
 	esperado := 6
@@ -113,7 +123,7 @@ func TestNomeDoTeste(t *testing.T){
 	}
 }
 ~~~
-O que fizemos aqui foi definir um slice de inteiros para ser testado, também definimos o resultado esperado e passamos o retorno da função, que ainda será criada para retornar o segundo número maior desse slice para uma variável, e ao final comparamos se o resultado é o mesmo que o esperado.
+O que fizemos aqui foi definir um slice de inteiros para ser testado, também definimos o resultado esperado e passamos o retorno da função, que ainda será criada, para retornar o segundo número maior desse slice para uma variável, e ao final comparamos se o resultado é o mesmo que o esperado.
 
 **Código final do teste:**
 ~~~go
@@ -132,6 +142,7 @@ func TestSegundoMaior(t *testing.T) {
 	}
 }
 ~~~
+
 ___
 
 ## Criando a função. 🔜 <a name="funcao"></a>
@@ -160,8 +171,11 @@ Defininos a função que chamamos no teste anteriormente, conforme o requisito, 
 A função **for range** em **Go** é o mesmo que **for each**.
 
 Em **Go** uma função pode ter vários retornos, no caso do **for range** ele retorna o índice e o elemento, e quando usamos o Blank Identifier (underscore) simplesmente queremos dizer "este valor não me interessa" 😂😂 não precisaremos do índice.
+
 ___
+
 ### Bom, esta função parece satisfazer o nosso requisito, vamos testar?
+
 ___
 
 ## Rodando o teste. 🔄 <a name="rodandoteste"></a>
@@ -184,9 +198,9 @@ Mas temos um porém, nós apenas "dizemos" que rodamos o nosso teste em um cená
 
 Mas... e se criássemos outros cenários de teste que podemos imaginar ser possível ❓❕❓
 
-E se o segundo número maior viesse antes do primeiro ❓❕❓
+E se o segundo número maior viesse depois do primeiro ❓❕❓
 
-**Exemplo: vamos colocar o 8 em primeiro lugar, será que nossa função atende a este cenário?**
+**Exemplo: vamos colocar o maior em primeiro lugar, será que nossa função atende a este cenário?**
 ~~~go
 package main
 
@@ -211,10 +225,12 @@ Rodando o teste novamente.
 Repare que a nossa cobertura continua em 100%, porém, o nosso teste falhou.
 
 Este é o problema, devemos imaginar todos os cenários possíveis para poder garantir que a função irá funcionar corretamente, com a miníma possibilidade de falhas, mesmo com 100% de cobertura da função.
+
 ___
 
 ## Ajustando o teste. ⚠️ <a name="ajusteteste"></a>
 ### Vamos precisar criar diversos cenários para os testes, então vamos criar uma estrutura auxiliadora para facilitar a criação deles.
+
 ___
 
 ~~~go
@@ -237,10 +253,12 @@ ___
 ~~~
 O que fizemos foi atribuir a variável **"cenarios"** um slice de structs (structs é uma forma de você definir estruturas de dados personalizadas, assim facilita no entendimento do código, entre outras coisas).
 
-Criamos apenas dois cenários, mas podemos criar quanto quisermos.
+Criamos apenas dois cenários, mas podemos criar quantos quiser.
 
 **Obs: "descricao"** deve ser uma descrição minima do cenário, coloquei de forma mais genérica porque é apenas um exemplo.
+
 ___
+
 Agora criaremos um **for** para percorrer este slice de estruturas e rodar um teste para cada cenário.
 
 ~~~go
@@ -306,11 +324,14 @@ func retornaResultado(t *testing.T, dado []int, esperado, obtido int) {
 	}
 }
 ~~~
+
 ___
 
 ## Ajustando o código. ⚠️ <a name="ajustefuncao"></a>
 ### Agora precisamos ajustar o código para atender os novos cenários.
+
 ___
+
 Na nossa função eu apenas adicionei um novo **if** para checar se o número atual é menor que o primeiro e maior que o segundo e sendo verdadeira esta condição eu atribuo o número ao segundo.
 ~~~go
 package main
@@ -334,12 +355,15 @@ func SegundoMaior(numeros []int) int {
 ~~~
 
 **OBS:** Pode existir outras formas de criar este algoritmo.
+
 ___
+
 ## Teste funcionando. ✅✅ <a name="testeok"></a>
 Por fim, vemos nosso teste passando novamente e com mais confiança de que está certo.
 
 ![Primeiro teste](imgs/gotestcover.png) 💯💯💯
+
 ___
 
 ## Conclusão ☑️ <a name="conclusao"></a>
-É isso pessoal, mesmo que o exemplo seja bem simples, eu espero que tenha passado uma noção da importância de diversos cenários para seu teste, e também um breve noção de **Go** para quem não conhece a linguagem. 😄😄
+É isso pessoal, mesmo que o exemplo seja bem simples, eu espero que tenha passado uma noção da importância de diversos cenários para seu teste, e também uma breve noção de **Go** para quem não conhece a linguagem. 😄😄
